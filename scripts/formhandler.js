@@ -24,7 +24,7 @@ var powerEmail = "";
             var strength = $("#strengthLevel").val();
             var flavor = $("#flavorshot").find(":selected").val();
             var size = $("input[name=size]:checked").val();
-            if (strength > 66 && flavor != '' && size === 'bfc' && did_modal_pop === false) {
+            if (strength > 66 && flavor != '' && size === 'coffeezilla' && did_modal_pop === false) {
                 //HANDLE MODAL
                 console.log('Modal should be showing now');
                 did_modal_pop = true;
@@ -40,6 +40,10 @@ var powerEmail = "";
                 this.reset();
                 this.elements[0].focus();
                 did_modal_pop = false;
+                $("#powerBar").hide();
+                $("#range-label").empty();
+                $("#range-label").append('Caffeine Rating: 30');
+                $("#range-label").css("color", "green");
             }
         });
     };
