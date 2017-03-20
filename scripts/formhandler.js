@@ -1,5 +1,5 @@
 var did_modal_pop = false;
-var powerEmail = "";
+var achievers = [];
 
 (function(window) {
     'use strict';
@@ -18,16 +18,16 @@ var powerEmail = "";
     }
 
     FormHandler.prototype.addSubmitHandler = function(fn) {
-        console.log('Setting submit handler for form');
         this.$formElement.on('submit', function(event) {
             event.preventDefault();
+            var email = $("#emailInput").val();
             var strength = $("#strengthLevel").val();
             var flavor = $("#flavorshot").find(":selected").val();
             var size = $("input[name=size]:checked").val();
-            if (strength > 66 && flavor != '' && size === 'coffeezilla' && did_modal_pop === false) {
+            if ((strength > 66 && flavor != '' && size === 'coffeezilla' && did_modal_pop === false) || (achievers.indexOf(email) === 0 && did_modal_pop === false)) {
                 //HANDLE MODAL
-                console.log('Modal should be showing now');
                 did_modal_pop = true;
+                achievers.push(email);
                 $("#myModal").modal('show');
             } else {
                 var data = {};
